@@ -5,7 +5,7 @@ class UserController {
   async getAllUsers(req, res) {
     try {
       const [users] = await db.query("SELECT * FROM users");
-      res.json(users);
+      res.status(200).json({ message: "users fetched successfully", users });
     } catch (error) {
       console.error("Error fetching users:", error);
       res.status(500).json({ error: "Failed to fetch users" });
